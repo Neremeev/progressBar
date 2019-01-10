@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .wrapper {
+      position: relative;
+
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    .bar {
+      width: 100%;
+      height: 20px;
+
+      background: #eee;
+      border-radius: 25px;
+    }
+
+    .progress__bar {
+      position: absolute;
+      top: 0;
+
+      height: 20px;
+
+      text-align: center;
+
+      background: #f6f8;
+      border-radius: 25px;
+
+      /*   animation: process 0.8s linear forwards; */
+    }
+
+    @keyframes process {
+      0% {
+        width: 0;
+      }
+      25% {
+        width: 25%;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="bar"></div>
+    <div class="progress__bar"></div>
+  </div>
+<script>
+    (function progress (e) {
+        let processBar = document.querySelector(".progress__bar"),
+            width = 0;
+        setProgress = setInterval(progressBar, 10);
+
+        function progressBar() {
+            if (width >= 100) {
+                clearInterval(setProgress);
+            } else {
+                width += 1;
+                processBar.style.width = width + "%";
+                processBar.textContent = width + " %";
+            }
+        }
+    }());
+</script>
+</body>
+</html>
